@@ -1,0 +1,81 @@
+<html>
+<head>
+<title></title>
+ 
+<script type="text/javascript" charset="utf-8" src="phonegap/cordova-1.6.0.js"></script>
+ 
+<script id="sap-ui-bootstrap"
+type="text/javascript"
+src="sapui5/resources/sap-ui-core.js"
+data-sap-ui-theme="sap_platinum"
+data-sap-ui-libs="sap.ui.commons">
+</script>
+ 
+<script id='AppHeader' type="text/javascript">
+//Wait for PhoneGap to load
+document.addEventListener("deviceready",onDeviceReady,false);
+ 
+function onDeviceReady(){
+//find the name of the device platform from PhoneGap
+createSAPUI(device.platform);
+}
+ 
+function createSAPUI(devicePlatform){
+//create the ApplicationHeader control
+var oAppHeader = new sap.ui.commons.ApplicationHeader();
+//configure the branding area
+//oAppHeader.setLogoSrc("http://www.sap.com/global/images/SAPLogo.gif");
+oAppHeader.setLogoText("Bouvet - SAPUI5 experiments - Running on " + devicePlatform);
+//configure the welcome area
+oAppHeader.setDisplayWelcome(true);
+oAppHeader.placeAt("appHeader");
+var oLinksLayout = new sap.ui.commons.layout.MatrixLayout({
+id : "linksLayout",
+layoutFixed : false});
+var oLabel = new sap.ui.commons.Label({text : 'Experiment #1:'});
+// creates a simple link with an action and property href not set
+var oLink = new sap.ui.commons.Link({
+text: "Shell component",
+tooltip: "Demo of the shell component",
+href:"shell_min.html",
+});
+oLinksLayout.createRow(oLabel,oLink);
+// attach the link to the DOM
+oLabel = new sap.ui.commons.Label({text : 'Experiment #2:'});
+oLink = new sap.ui.commons.Link({
+text: "ThingInspector component",
+tooltip: "Demo of the ThingInspector",
+href:"thing_min.html",
+});
+oLinksLayout.createRow(oLabel,oLink);
+oLabel = new sap.ui.commons.Label({text : 'Experiment #3:'});
+oLink = new sap.ui.commons.Link({
+text: "Feed component",
+tooltip: "Demo of the Feed",
+href:"feed_min.html",
+});
+oLinksLayout.createRow(oLabel,oLink);
+oLabel = new sap.ui.commons.Label({text : 'Experiment #4:'});
+oLink = new sap.ui.commons.Link({
+text: "Consumption of OData with sapui5 component",
+tooltip: "Demo of the Feed",
+href:"odata.html",
+});
+oLinksLayout.createRow(oLabel,oLink);
+oLabel = new sap.ui.commons.Label({text : 'Experiment #5:'});
+oLink = new sap.ui.commons.Link({
+text: "Phonegap API integration",
+tooltip: "Demo of the phonegap contacts api together with sapui5",
+href:"contacts.html",
+});
+oLinksLayout.createRow(oLabel,oLink);
+oLinksLayout.placeAt("links");
+}
+</script>
+ 
+</head>
+<body>
+<div id="appHeader" script="AppHeader"></div>
+<div id="links"><div>
+</body>
+</html>
